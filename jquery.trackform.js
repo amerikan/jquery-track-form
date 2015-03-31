@@ -20,12 +20,24 @@ $(function () {
         var isDirty = false;
 
         // Only track inputs with the specified class that are not hidden
-        $('input[type="text"], textarea', this).each(function (i) {
+        $('input:not([type="submit"]), textarea', this).each(function (i) {
             
             var $this = $(this);
 
             // Save initial input value
-            data[i] = $this.val();
+            if ($this.prop('type') === 'radio' && $this.prop('name').length) {
+
+                var radioGroupName = $this.prop('name');
+
+                data[i] = $('input[type="radio"][name="' + radioGroupName + '"]:checked').val();
+
+            } else if ($this.prop('type') === 'checkbox') { 
+
+                data[i] = $this.is(':checked');
+
+            } else {
+                data[i] = $this.val();
+            }
 
             // Add an ID to track independently
             $this.data('trackform-id', i);
@@ -33,16 +45,39 @@ $(function () {
             // Input not dirty by default
             dirtyInputs[i] = false;
 
-        }).on('input propertychange', function () {
+
+        }).on('input propertychange click', function (event) {
 
             var $this = $(this);
             var id = $this.data('trackform-id');
+            var newValue = $this.val();
+
+            if ($this.prop('type') === 'checkbox') { 
+
+                newValue = $this.is(':checked');
+            }
+
 
             // Check if value differs from initial value
-            if (data[id] !== $this.val()) {
+            if (data[id] !== newValue) {
+                
                 dirtyInputs[id] = true;
             } else {
-                dirtyInputs[id] = false;
+
+                if ($this.prop('type') === 'radio' && $this.prop('name').length) {
+
+                    var radioGroupName = $this.prop('name');
+
+                    $('input[type="radio"][name="' + radioGroupName + '"]').each(function () {
+                        var id = $(this).data('trackform-id');
+
+                        dirtyInputs[id] = false;
+
+                    });
+
+                } else {
+                    dirtyInputs[id] = false;
+                }
             }
 
             // Determine if the form is dirty

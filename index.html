@@ -2,12 +2,23 @@
 <html>
     <head>
         <title>jquery.trackform.js</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
         <style type="text/css">
+            body {
+                margin: 30px;
+            }
+
+            form {
+                padding: 20px;
+            }
+
             input, textarea {
-                font-size: 14px;
-                font-family: Helvetica, arial, sans-serif;
                 margin: 5px 0;
-                padding: 5px;
+            }
+
+            label {
+                display: block;
+                font-weight: bold;
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -15,14 +26,35 @@
     </head>
     <body>
         <h1>Demo</h1>
-        <h3>Change the input in the text fields or text area then try leaving the page.</h3>
+        <h3>Change the form values and then try leaving the page.</h3>
 
-        <a href="https://www.google.com">Leave Page</a>
+        <a href="https://www.google.com">Leave Page</a><br /><br />
 
         <form>
+            <label>Text Input</label>
             <input type="text" value="hello" class="track-form" /> <br />
             <input type="text" value="world" class="track-form" /> <br />
-            <textarea cols="30" rows="10" class="track-form">Change me if you'd like!</textarea> <br />
+
+            <label>Textarea</label>
+            <textarea cols="30" rows="3" class="track-form">Change me if you'd like!</textarea> <br />
+            
+            <label>Radio Buttons</label>
+            <input type="radio" name="color" value="red" checked="checked" /> Red
+            <input type="radio" name="color" value="green" /> Green
+            <input type="radio" name="color" value="blue" /> Blue
+
+            <br />
+
+            <input type="radio" name="habitat" value="jungle" /> Jungle
+            <input type="radio" name="habitat" value="forest" /> Forest
+            <input type="radio" name="habitat" value="desert" /> Desert
+
+            <label>Checkboxes</label>
+            <input type="checkbox" name="color" value="apple" /> Apple
+            <input type="checkbox" name="color" value="banana" /> Banana
+            <input type="checkbox" name="color" value="pear" checked="checked" /> Pear
+
+            <br /><br />
 
             <input type="submit" value="Submit" />
         </form>
@@ -30,7 +62,7 @@
         <script type="text/javascript">
 
             $(function () {
-                $('form').trackForm().css({'border': '1px solid red'});
+                $('form').trackForm().css({'border': '1px solid #ccc'});
             });
 
         </script>
