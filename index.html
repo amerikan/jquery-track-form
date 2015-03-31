@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jquery.trackform.js</title>
+        <style type="text/css">
+            input, textarea {
+                font-size: 14px;
+                font-family: Helvetica, arial, sans-serif;
+                margin: 5px 0;
+                padding: 5px;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.trackform.js"></script>
+    </head>
+    <body>
+        <h1>Demo</h1>
+        <h3>Change the input in the text fields or text area then try refreshing the page.</h3>
+
+        <form>
+            <p>Not tracked for changes:</p>
+            <input type="text" value="I'm not being tracked" /> <br />
+
+            <p>Will be tracked for changes (if initial values are changed, when refresh you will get a confirmation prompt):</p>
+            <input type="text" value="hello" class="track-form" /> <br />
+            <input type="text" value="world" class="track-form" /> <br />
+            <textarea cols="30" rows="10" class="track-form">Change me if you'd like!</textarea>
+        </form>
+
+        <script type="text/javascript">
+
+            $(function () {
+                $('input.track-form, textarea.track-form').trackForm();
+            });
+
+        </script>
+    </body>
+</html>
