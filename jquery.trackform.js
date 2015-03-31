@@ -6,7 +6,14 @@
 
 $(function () {
 
-    $.fn.trackForm = function() {
+    $.fn.trackForm = function(options) {
+
+        // default settings:
+        var defaults = {
+            ignoreClicks: [] // Array of selectors that should not show prompt when leaving an unsaved form
+        };
+
+        var settings = $.extend({}, defaults, options);
 
         var data = [];
         var dirtyInputs = [];
@@ -26,7 +33,7 @@ $(function () {
             // Input not dirty by default
             dirtyInputs[i] = false;
 
-        }).change(function () {
+        }).on('input propertychange', function () {
 
             var $this = $(this);
             var id = $this.data('trackform-id');
@@ -43,8 +50,6 @@ $(function () {
 
                 isDirty = true;
 
-                console.log('is dirty')
-
                 window.onbeforeunload = function () {
                     return 'Are you sure you want to leave without saving the changes?';
                 };
@@ -53,19 +58,22 @@ $(function () {
 
                 isDirty = false;
 
-                console.log('is clean')
-
                 window.onbeforeunload = null;
             }
         });
 
         // Ignore tracking when submitting the form
-        $('input[type="submit"]', this).click(function () {
+        $(this).submit(function () {
             window.onbeforeunload = null;
         });
 
+        // Ignore tracking when these selectors are clicked
+        if (settings.ignoreClicks.length) {
+            $(settings.ignoreClicks.join(',')).click(function(event) {
+                window.onbeforeunload = null;
+            });
+        }
+
         return this;
-
     };
-
 });
