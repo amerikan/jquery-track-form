@@ -19,7 +19,7 @@ In your javascript initialize by selecting
 $(function () {
 	
 	// Track any element with the given class
-	$(.track-form').trackForm();
+	$('.track-form').trackForm();
 
 	// or you can be specific to input/textarea elements
 	$('input.track-form, textarea.track-form').trackForm();
