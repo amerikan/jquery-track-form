@@ -15,22 +15,22 @@
     </head>
     <body>
         <h1>Demo</h1>
-        <h3>Change the input in the text fields or text area then try refreshing the page.</h3>
+        <h3>Change the input in the text fields or text area then try leaving the page.</h3>
+
+        <a href="https://www.google.com">Leave Page</a>
 
         <form>
-            <p>Not tracked for changes:</p>
-            <input type="text" value="I'm not being tracked" /> <br />
-
-            <p>Will be tracked for changes (if initial values are changed, when refresh you will get a confirmation prompt):</p>
             <input type="text" value="hello" class="track-form" /> <br />
             <input type="text" value="world" class="track-form" /> <br />
-            <textarea cols="30" rows="10" class="track-form">Change me if you'd like!</textarea>
+            <textarea cols="30" rows="10" class="track-form">Change me if you'd like!</textarea> <br />
+
+            <input type="submit" value="Submit" />
         </form>
 
         <script type="text/javascript">
 
             $(function () {
-                $('input.track-form, textarea.track-form').trackForm();
+                $('form').trackForm().css({'border': '1px solid red'});
             });
 
         </script>

@@ -13,7 +13,7 @@ $(function () {
         var isDirty = false;
 
         // Only track inputs with the specified class that are not hidden
-        return this.each(function (i) {
+        $('input[type="text"], textarea', this).each(function (i) {
             
             var $this = $(this);
 
@@ -43,6 +43,8 @@ $(function () {
 
                 isDirty = true;
 
+                console.log('is dirty')
+
                 window.onbeforeunload = function () {
                     return 'Are you sure you want to leave without saving the changes?';
                 };
@@ -51,9 +53,18 @@ $(function () {
 
                 isDirty = false;
 
+                console.log('is clean')
+
                 window.onbeforeunload = null;
             }
         });
+
+        // Ignore tracking when submitting the form
+        $('input[type="submit"]', this).click(function () {
+            window.onbeforeunload = null;
+        });
+
+        return this;
 
     };
 
