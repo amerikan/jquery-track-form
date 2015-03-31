@@ -20,7 +20,7 @@ $(function () {
         var isDirty = false;
 
         // Only track inputs with the specified class that are not hidden
-        $('input:not([type="submit"]), textarea', this).each(function (i) {
+        $('input:not([type="submit"]), select, textarea', this).each(function (i) {
             
             var $this = $(this);
 
