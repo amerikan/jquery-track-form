@@ -1,14 +1,15 @@
 # jquery-trackform.js
 A jQuery plugin to track if the initial form values have changed
 
-[Demo](http://amerikan.github.io/jquery-track-form/)
+## Demo
+[Demo here](http://amerikan.github.io/jquery-track-form/)
 
 Currently it supports:
 - [x] `<textarea />`
 - [x] `<input type="text" />`
 - [x] `<input type="radio" />`
 - [x] `<input type="checkbox" />`
-- [ ] `<select>`
+- [x] `<select>`
 
 ## Usage
 
@@ -36,3 +37,4 @@ Sometimes you'll want certain anchors to ignore whether the form has changed or 
 $(function () {
 	$('form').trackForm(ignoreClicks: ['#some-anchor','.another-anchor']);
 });
+
