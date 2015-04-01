@@ -1,21 +1,19 @@
 # jquery-trackform.js
-A jQuery plugin to track if the initial form values have changed
+A smart jQuery plugin that prompts the user with a warning before leaving the page when the **initial** form values have changed.
+
+Requires jQuery 1.6+
 
 ## Demo
 [Demo here](http://amerikan.github.io/jquery-track-form/)
-
-Currently it supports:
-- [x] `<textarea />`
-- [x] `<input type="text" />`
-- [x] `<input type="radio" />`
-- [x] `<input type="checkbox" />`
-- [x] `<select>`
 
 ## Usage
 
 ```html
 	<form>
-		<input value="hello" />
+		<input type="text" value="hello" />
+		<input type="radio" name="fruit" value="cherry" /> Cherry
+		<input type="radio" name="fruit" value="blueberry" /> Blueberry
+		<input type="checkbox" value="happy" checked="checked" /> Happy
 		<textarea>yo what's up!</textarea>
 		<input type="submit" value="submit" />
 	</form>
@@ -32,9 +30,27 @@ $(function () {
 
 ## Advanced Usage
 
-Sometimes you'll want certain anchors to ignore whether the form has changed or not. You can pass the selectors in `ignoreClicks` option as an Array.
+Sometimes you'll want certain anchors to be ignored when clicked whether the initial form values have changed or not. You can pass the selectors to be ignored in `ignoreClicks` option as an Array.
 ```js
 $(function () {
 	$('form').trackForm(ignoreClicks: ['#some-anchor','.another-anchor']);
 });
 
+## Support
+
+Currently it supports the following:
+- [x] `<textarea />`
+- [x] `<input type="text" />`
+- [x] `<input type="radio" />`
+- [x] `<input type="checkbox" />`
+- [x] `<select>`
+
+### Browser support:
+
+Firefox - **Yes**
+Chrome - **Yes**
+Internet Explorer - **?**
+Safari - **Yes**
+Safari iOS - **No** plugin uses `beforeunload` event which is not supported by iOS
+Opera - **?**
+Opera Mini - **?**
