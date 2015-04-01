@@ -1,7 +1,7 @@
 # jquery-trackform.js
 A smart jQuery plugin that prompts the user with a warning before leaving the page when the **initial** form values have changed.
 
-Requires jQuery 1.6+
+**Requires jQuery 1.7++**
 
 ## Demo
 [Demo here](http://amerikan.github.io/jquery-track-form/)
@@ -39,7 +39,7 @@ $(function () {
 
 ## Support
 
-Currently it supports the following:
+Currently it tracks the following for changes:
 - [x] `<textarea />`
 - [x] `<input type="text" />`
 - [x] `<input type="radio" />`
@@ -48,10 +48,8 @@ Currently it supports the following:
 
 ### Browser support:
 
-Firefox - **Yes**
-Chrome - **Yes**
-Internet Explorer - **?**
-Safari - **Yes**
-Safari iOS - **No** plugin uses `beforeunload` event which is not supported by iOS
-Opera - **?**
-Opera Mini - **?**
+Firefox    | Chrome     | IE         | Safari     | iOS Safari | Opera      | Opera Mini
+:--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------:
+:white_check_mark: | :white_check_mark: | ? | :white_check_mark: | :x: `*` | ? | ? 
+
+`*` plugin uses `beforeunload` event which is not supported by iOS
