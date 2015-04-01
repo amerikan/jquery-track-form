@@ -35,6 +35,7 @@ Sometimes you'll want certain anchors to be ignored when clicked whether the ini
 $(function () {
 	$('form').trackForm(ignoreClicks: ['#some-anchor','.another-anchor']);
 });
+```
 
 ## Support
 
